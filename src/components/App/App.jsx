@@ -1,10 +1,9 @@
 import { Component } from 'react';
-import Contacts from './components/Contacts';
-import Form from './components/Form';
-import Filter from './components/Filter';
+import Contacts from '../Contacts';
+import Form from '../Form';
+import Filter from '../Filter';
 import { nanoid } from 'nanoid';
-import 'modern-normalize/modern-normalize.css';
-import './index.css';
+
 class App extends Component {
   state = {
     contacts: [
@@ -15,14 +14,13 @@ class App extends Component {
     ],
     filter: '',
   };
+
   deleteContacts = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  formSubmitHandler = data => {
-    console.log(data);
-  };
+
   addContact = (name, number) => {
     const duplicateContact = this.state.contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase(),
@@ -36,14 +34,15 @@ class App extends Component {
       name,
       number,
     };
-
     this.setState(prevState => ({
       contacts: [contactId, ...prevState.contacts],
     }));
   };
+
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
+
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
@@ -51,6 +50,7 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
@@ -62,11 +62,11 @@ class App extends Component {
     if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
     }
-    console.log(parsedContacts);
   }
   render() {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
+
     return (
       <div>
         <div className="Wrapper">
@@ -77,7 +77,6 @@ class App extends Component {
         <div className="Wrapper">
           <h2 className="Title">Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter} />
-
           <Contacts
             contacts={visibleContacts}
             onDeleteContact={this.deleteContacts}

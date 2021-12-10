@@ -2,9 +2,9 @@ import s from './Contacts.module.css';
 
 function Contacts({ contacts, onDeleteContact }) {
   return (
-    <ul className="bbb">
+    <ul>
       {contacts.map(({ id, name, number }) => (
-        <li key={id} className={s.ListItem}>
+        <li key={id} className={s.ContactItem}>
           <p>{name}</p>
           <p>{number}</p>
           <button
