@@ -1,0 +1,41 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+img {
+  display: block;
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.Wrapper {
+  border: 1px solid black;
+  width: 350px;
+  margin: 20px auto;
+  padding: 20px 0;
+  background-color: cadetblue;
+}
+
+.Title {
+  text-align: center;
+}
